@@ -11,7 +11,6 @@ const Reviews = () => {
   useEffect(() => {
     const getReviews = async () => {
       const { data } = await api.getSearchMoviesReview(movieId);
-      console.log('reviewsList', data);
 
       setReviews(
         data.results.map(

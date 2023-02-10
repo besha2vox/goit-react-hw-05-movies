@@ -6,6 +6,7 @@ import {
   ContentWrraper,
   GanreWrapper,
 } from './MovieInfo.styled';
+import PropType from 'prop-types';
 
 const MovieInfo = ({ movie }) => {
   const { genres, title, overview, poster, votes } = movie;
@@ -33,3 +34,13 @@ const MovieInfo = ({ movie }) => {
 };
 
 export default MovieInfo;
+
+MovieInfo.propType = {
+  movie: PropType.shape({
+    genres: PropType.string.isRequired,
+    title: PropType.string.isRequired,
+    overview: PropType.string.isRequired,
+    poster: PropType.string.isRequired,
+    votes: PropType.number.isRequired,
+  }),
+};

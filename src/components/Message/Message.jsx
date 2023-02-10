@@ -1,7 +1,12 @@
 import { Discription } from './Message.styled';
+import PropType from 'prop-types';
 
-const NotFoundPage = ({ text }) => {
+const Message = ({ text }) => {
   return <Discription>{text}</Discription>;
 };
 
-export default NotFoundPage;
+export default Message;
+
+Message.propType = {
+  text: PropType.string.isRequired,
+};

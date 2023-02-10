@@ -33,8 +33,6 @@ const Cast = () => {
     getActors();
   }, [movieId]);
 
-  console.log(actors);
-
   return (
     <>
       {!!actors.length ? (
