@@ -21,16 +21,19 @@ const itemStyles = css`
     display: inherit;
     flex-direction: column;
     justify-content: end;
+    flex-grow: 1;
   }
 `;
 
-const Item = styled(Link)`
+const Item = styled.li`
   ${itemStyles}
+`;
 
+const ItemLink = styled(Link)`
   &:hover {
     box-shadow: 0 0 3px 2px #db8f2cac;
     transform: scale(1.2);
   }
 `;
 
-export { Item, itemStyles };
+export { ItemLink, itemStyles, Item };

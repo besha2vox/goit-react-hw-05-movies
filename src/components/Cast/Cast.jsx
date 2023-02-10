@@ -12,6 +12,7 @@ const CastItem = styled.li`
 
 const Cast = () => {
   const [actors, setActors] = useState([]);
+  const [isCastFetched, setIsCastFetched] = useState(false);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -28,6 +29,7 @@ const Cast = () => {
             : 'https://st2.depositphotos.com/1009634/7235/v/950/depositphotos_72350117-stock-illustration-no-user-profile-picture-hand.jpg',
         }))
       );
+      setIsCastFetched(true);
     };
 
     getActors();
@@ -35,7 +37,7 @@ const Cast = () => {
 
   return (
     <>
-      {!!actors.length ? (
+      {!!actors.length && (
         <List>
           {actors.map(({ id, character, name, profile }) => (
             <CastItem key={id}>
@@ -47,7 +49,8 @@ const Cast = () => {
             </CastItem>
           ))}
         </List>
-      ) : (
+      )}
+      {isCastFetched && !actors.length && (
         <Message text="Cast of actors not found" />
       )}
     </>

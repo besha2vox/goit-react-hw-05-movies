@@ -6,6 +6,7 @@ import Message from 'components/Message';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
+  const [isReviewsFetched, setIsReviewsFetched] = useState(false);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -25,6 +26,7 @@ const Reviews = () => {
           })
         )
       );
+      setIsReviewsFetched(true);
     };
 
     getReviews();
@@ -32,7 +34,7 @@ const Reviews = () => {
 
   return (
     <>
-      {!!reviews.length ? (
+      {!!reviews.length && (
         <ReviewsList>
           {reviews.map(({ id, author, content, avatar }) => (
             <ReviewsItem key={id}>
@@ -46,7 +48,8 @@ const Reviews = () => {
             </ReviewsItem>
           ))}
         </ReviewsList>
-      ) : (
+      )}
+      {!reviews.length && isReviewsFetched && (
         <Message text="There are no reviews" />
       )}
     </>
