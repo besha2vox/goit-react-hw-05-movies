@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import api from 'API/API';
-import {} from './Movies.styled';
 import Container from 'components/Container';
 import SearchForm from 'components/SearchForm';
 import MoviesList from 'components/MoviesList';
