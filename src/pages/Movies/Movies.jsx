@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import api from 'API/API';
 import Container from 'components/Container';
 import SearchForm from 'components/SearchForm';
@@ -7,10 +8,11 @@ import Loader from 'components/Loader';
 import Message from 'components/Message';
 
 const Movies = () => {
-  const [query, setQuery] = useState(null);
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isMovieFetched, setIsMovieFetched] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams({ query: '' });
+  const query = searchParams.get('query');
 
   useEffect(() => {
     if (!query || query === api.queryToFetch) return;
@@ -44,8 +46,8 @@ const Movies = () => {
     return () => (api.queryToFetch = null);
   }, [query]);
 
-  const onFormSubmit = q => {
-    setQuery(q);
+  const onFormSubmit = query => {
+    setSearchParams({ query });
   };
 
   const isMessegeShow = movies.length < 1 && isMovieFetched;
@@ -53,7 +55,7 @@ const Movies = () => {
   return (
     <main>
       <Container>
-        <SearchForm onFormSubmit={onFormSubmit} />
+        <SearchForm search={query} onFormSubmit={onFormSubmit} />
         {!!movies.length && <MoviesList movies={movies} />}
         {isMessegeShow && <Message text="Movies not found. Try again." />}
         {!isMovieFetched && (

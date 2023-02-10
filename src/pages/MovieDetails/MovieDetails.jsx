@@ -12,7 +12,7 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLink = location.state?.from ?? '/';
 
   useEffect(() => {
     const getMovie = async () => {
@@ -40,7 +40,7 @@ const MovieDetails = () => {
   return (
     <main>
       <Container>
-        <BackButton to={backLinkHref}>{'<- Go back'}</BackButton>
+        <BackButton to={backLink}>{'<- Go back'}</BackButton>
         <MovieInfo movie={movie} />
         <AdditionalInfo>
           <Cast />
