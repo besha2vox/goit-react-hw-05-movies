@@ -1,4 +1,5 @@
-import { Item, ItemLink } from './MoviesListItem.styled';
+import { Item } from './MoviesListItem.styled';
+import { Link } from 'react-router-dom';
 import PropType from 'prop-types';
 import { useLocation } from 'react-router-dom';
 const MoviesListItem = ({ movieId, title, poster }) => {
@@ -6,12 +7,12 @@ const MoviesListItem = ({ movieId, title, poster }) => {
 
   return (
     <Item>
-      <ItemLink to={`/movies/${movieId}`} state={{ from: location }}>
+      <Link to={`/movies/${movieId}`} state={{ from: location }}>
         <img src={poster} alt={title} />
         <div>
           <p>{title}</p>
         </div>
-      </ItemLink>
+      </Link>
     </Item>
   );
 };

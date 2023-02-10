@@ -42,7 +42,7 @@ const MovieDetails = () => {
       <Container>
         <BackButton to={backLink}>{'<- Go back'}</BackButton>
         <MovieInfo movie={movie} />
-        <AdditionalInfo>
+        <AdditionalInfo backLink={backLink}>
           <Cast />
           <Reviews />
         </AdditionalInfo>

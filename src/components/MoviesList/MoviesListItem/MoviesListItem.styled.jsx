@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
 
 const itemStyles = css`
   display: flex;
@@ -23,17 +22,15 @@ const itemStyles = css`
     justify-content: end;
     flex-grow: 1;
   }
-`;
 
-const Item = styled.li`
-  ${itemStyles}
-`;
-
-const ItemLink = styled(Link)`
   &:hover {
     box-shadow: 0 0 3px 2px #db8f2cac;
     transform: scale(1.2);
   }
 `;
 
-export { ItemLink, itemStyles, Item };
+const Item = styled.li`
+  ${itemStyles}
+`;
+
+export { itemStyles, Item };

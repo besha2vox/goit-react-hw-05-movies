@@ -3,16 +3,20 @@ import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import Loader from 'components/Loader';
 
-const AdditionalInfo = () => {
+const AdditionalInfo = ({ backLink }) => {
   return (
     <>
       <h3>Additional info:</h3>
       <AdditionalList>
         <li>
-          <AdditionalInfoLink to="cast">Cast</AdditionalInfoLink>
+          <AdditionalInfoLink to="cast" state={{ from: backLink }}>
+            Cast
+          </AdditionalInfoLink>
         </li>
         <li>
-          <AdditionalInfoLink to="reviews">Reviews</AdditionalInfoLink>
+          <AdditionalInfoLink to="reviews" state={{ from: backLink }}>
+            Reviews
+          </AdditionalInfoLink>
         </li>
       </AdditionalList>
       <Suspense fallback={<Loader />}>
