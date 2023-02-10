@@ -50,8 +50,6 @@ const Movies = () => {
 
   const isMessegeShow = movies.length < 1 && isMovieFetched;
 
-  console.log('isMoviesFound', isMessegeShow);
-
   return (
     <main>
       <Container>

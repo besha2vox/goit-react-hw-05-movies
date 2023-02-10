@@ -1,17 +1,13 @@
-import {} from './Home.styled';
 import { useState, useEffect } from 'react';
 import MoviesList from 'components/MoviesList';
 import Container from 'components/Container';
-import Loader from 'components/Loader';
 import api from 'API';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getMovies = async () => {
-      setLoading(true);
       try {
         const response = await api.getTrendingMovies();
         const { results } = response.data;
@@ -28,8 +24,6 @@ const Home = () => {
         setMovies(newMovieList);
       } catch (error) {
         console.log(error);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -40,7 +34,6 @@ const Home = () => {
     <main>
       <Container>
         <MoviesList movies={movies} />
-        {loading && <Loader />}
       </Container>
     </main>
   );

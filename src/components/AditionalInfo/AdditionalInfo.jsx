@@ -1,6 +1,7 @@
 import { AdditionalInfoLink, AdditionalList } from './AdditionalInfo.styled';
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
+import Loader from 'components/Loader';
 
 const AdditionalInfo = () => {
   return (
@@ -14,7 +15,7 @@ const AdditionalInfo = () => {
           <AdditionalInfoLink to="reviews">Reviews</AdditionalInfoLink>
         </li>
       </AdditionalList>
-      <Suspense>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </>
